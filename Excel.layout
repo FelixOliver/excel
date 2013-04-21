@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Debug" />
+	<File name="cell.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="88" topLine="0" />
+	</File>
+	<File name="cell.h" open="1" top="0" tabpos="5">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="formula bar.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="formula bar.h" open="1" top="1" tabpos="2">
+		<Cursor position="126" topLine="0" />
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="117" topLine="0" />
+	</File>
+	<File name="number.cpp" open="1" top="0" tabpos="9">
+		<Cursor position="54" topLine="0" />
+	</File>
+	<File name="number.h" open="1" top="0" tabpos="8">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="operator.cpp" open="1" top="0" tabpos="6">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="operator.h" open="1" top="0" tabpos="7">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="strings.cpp" open="1" top="0" tabpos="11">
+		<Cursor position="103" topLine="0" />
+	</File>
+	<File name="strings.h" open="1" top="0" tabpos="10">
+		<Cursor position="0" topLine="0" />
+	</File>
+</CodeBlocks_layout_file>
