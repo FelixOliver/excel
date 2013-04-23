@@ -1,0 +1,33 @@
+# depslib dependency file v1.0
+1366568209 source:d:\ejercicios c++\codeblocks\verde\constante.cpp
+	"Constante.h"
+
+1366577963 d:\ejercicios c++\codeblocks\verde\constante.h
+	<cstdlib>
+	<iostream>
+	<sstream>
+	"Nodo.h"
+
+1366565769 source:d:\ejercicios c++\codeblocks\verde\nodo.cpp
+	"Nodo.h"
+
+1366579778 d:\ejercicios c++\codeblocks\verde\nodo.h
+
+1366574291 source:d:\ejercicios c++\codeblocks\verde\operador.cpp
+	"Operador.h"
+
+1366577926 d:\ejercicios c++\codeblocks\verde\operador.h
+	"Nodo.h"
+
+1366574443 source:d:\ejercicios c++\codeblocks\verde\main.cpp
+	<iostream>
+	"Operador.h"
+
+1366577254 source:d:\ejercicios c++\codeblocks\verde\celda.cpp
+	"Celda.h"
+
+1366577947 d:\ejercicios c++\codeblocks\verde\celda.h
+	<string>
+	<iostream>
+	"Nodo.h"
+

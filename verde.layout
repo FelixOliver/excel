@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Debug" />
+	<File name="Celda.cpp" open="1" top="1" tabpos="4">
+		<Cursor position="573" topLine="28" />
+	</File>
+	<File name="Celda.h" open="1" top="0" tabpos="3">
+		<Cursor position="110" topLine="0" />
+	</File>
+	<File name="Constante.cpp" open="1" top="0" tabpos="6">
+		<Cursor position="420" topLine="0" />
+	</File>
+	<File name="Constante.h" open="1" top="0" tabpos="5">
+		<Cursor position="42" topLine="0" />
+	</File>
+	<File name="Operador.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="457" topLine="0" />
+	</File>
+	<File name="Operador.h" open="1" top="0" tabpos="1">
+		<Cursor position="199" topLine="0" />
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="7">
+		<Cursor position="85" topLine="0" />
+	</File>
+</CodeBlocks_layout_file>
