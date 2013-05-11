@@ -12,10 +12,14 @@ class Noper : public Nodo<T>
     public:
         Noper();
         virtual ~Noper();
+        virtual T eval(Nodo &A,Nodo &B);
 
     protected:
 
     private:
 
 };
+
+
+
 #endif // NOPER_H
