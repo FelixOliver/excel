@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1368242161 source:d:\oad\excel\minexcel\main.cpp
+	<iostream>
+	"Nodo.h"
+	<string>
+
+1368286688 d:\oad\excel\minexcel\nodo.h
+	<string>
+
+1368242173 source:d:\oad\excel\minexcel\nodo.cpp
+
+1368286650 d:\oad\excel\minexcel\noper.h
+	"Nodo.h"
+	<string>
+
+1368242649 source:d:\oad\excel\minexcel\noper.cpp
+
