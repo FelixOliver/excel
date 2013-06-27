@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>723</width>
+    <height>376</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QTableWidget" name="spreadsheet">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>150</y>
+      <width>481</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::AnyKeyPressed|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed</set>
+    </property>
+    <property name="showGrid">
+     <bool>true</bool>
+    </property>
+    <row>
+     <property name="text">
+      <string>New Row</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>New Row</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>New Row</string>
+     </property>
+    </row>
+    <column>
+     <property name="text">
+      <string>New Column</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>New Column</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>New Column</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>New Column</string>
+     </property>
+    </column>
+    <item row="0" column="0">
+     <property name="text">
+      <string/>
+     </property>
+     <property name="flags">
+      <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+     </property>
+    </item>
+    <item row="0" column="1">
+     <property name="flags">
+      <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+     </property>
+    </item>
+    <item row="0" column="2">
+     <property name="flags">
+      <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+     </property>
+    </item>
+    <item row="0" column="3">
+     <property name="text">
+      <string/>
+     </property>
+     <property name="flags">
+      <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+     </property>
+    </item>
+    <item row="1" column="0">
+     <property name="flags">
+      <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+     </property>
+    </item>
+    <item row="1" column="1">
+     <property name="flags">
+      <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+     </property>
+    </item>
+    <item row="1" column="2">
+     <property name="flags">
+      <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+     </property>
+    </item>
+    <item row="1" column="3">
+     <property name="flags">
+      <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+     </property>
+    </item>
+    <item row="2" column="0">
+     <property name="flags">
+      <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+     </property>
+    </item>
+    <item row="2" column="1">
+     <property name="flags">
+      <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+     </property>
+    </item>
+    <item row="2" column="2">
+     <property name="flags">
+      <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+     </property>
+    </item>
+    <item row="2" column="3">
+     <property name="flags">
+      <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLineEdit" name="Formule_Bar">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>90</y>
+      <width>481</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Formule_bar_txt">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>90</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Formule Bar</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>723</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
