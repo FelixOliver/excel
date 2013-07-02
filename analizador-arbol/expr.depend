@@ -1,0 +1,67 @@
+# depslib dependency file v1.0
+1371238303 source:h:\expr\expr\arbol.cpp
+	"Arbol.h"
+
+1371238207 h:\expr\expr\arbol.h
+	<string>
+	<iostream>
+	<vector>
+	<stack>
+	"Nodo.h"
+
+1371241756 h:\expr\expr\nodo.h
+	<string>
+	<math.h>
+	<stdio.h>
+	<iostream>
+
+1371238347 source:h:\expr\expr\main.cpp
+	"Arbol.h"
+
+1371237944 source:h:\expr\expr\nodo.cpp
+	"Nodo.h"
+
+1371238303 source:h:\z disco duro\expr\expr\arbol.cpp
+	"Arbol.h"
+
+1372260217 h:\z disco duro\expr\expr\arbol.h
+	<string>
+	<iostream>
+	<vector>
+	<stack>
+	"Nodo.h"
+
+1371241756 h:\z disco duro\expr\expr\nodo.h
+	<string>
+	<math.h>
+	<stdio.h>
+	<iostream>
+
+1371237944 source:h:\z disco duro\expr\expr\nodo.cpp
+	"Nodo.h"
+
+1372260239 source:h:\z disco duro\expr\expr\main.cpp
+	"Arbol.h"
+
+1372644091 source:g:\z disco duro\expr\expr\arbol.cpp
+	"Arbol.h"
+
+1372260217 g:\z disco duro\expr\expr\arbol.h
+	<string>
+	<iostream>
+	<vector>
+	<stack>
+	"Nodo.h"
+
+1372699699 g:\z disco duro\expr\expr\nodo.h
+	<string>
+	<math.h>
+	<stdio.h>
+	<iostream>
+
+1372634534 source:g:\z disco duro\expr\expr\main.cpp
+	"Arbol.h"
+
+1371237944 source:g:\z disco duro\expr\expr\nodo.cpp
+	"Nodo.h"
+
