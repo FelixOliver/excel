@@ -1,12 +1,17 @@
 #ifndef SYNTAXANALIZER_H
 #define SYNTAXANALIZER_H
+
+#include <stack>
 #include "NodeConst.h"
 #include "NodeOperator.h"
-//#include "Cell.h"
+#include "nodecell.h"
+#include "lexicalanalizer.h"
+#include <thread>
 
 
 typedef vector<Node*> list_depend;
 typedef vector<expr> list_for_eval;
+typedef stack<expr> stack_for_eval;
 
 class SyntaxAnalizer
 {
@@ -26,70 +31,67 @@ class SyntaxAnalizer
          * @brief renews the data member m_expression
          * @param expression an expression
          */
-        inline void set_expression(expr expression){clean_depend();m_expression=expression;}
+        inline void set_expression(expr expression){clean_all();m_expression=expression;}
 
         /**
          * @brief cleans the lists m_atoms and m_dependencies
          * @sa clean_depend() and clean_atoms_list()
          */
-        inline void clean_all(){clean_depend();clean_atoms_list();}
+        inline void clean_all(){clean_postfix();clean_atoms_list();}
 
         /**
-         * @brief cleans m_dependencies
+         * @brief cleans m_postfix
          */
-        inline void clean_depend(){m_dependencies.empty();}
+        inline void clean_postfix(){m_postfix.clear();}
         /**
          * @brief cleans m_atoms
          */
-        inline void clean_atoms_list(){m_atoms.empty();}
+        inline void clean_atoms_list(){m_atoms.clear();}
 
         /**
          * @brief deletes white spaces of an expression
          */
+
+        bool expr_is_correct();
+
         void clear_spaces();
 
         /**
          * @brief divides an expression in atoms and stores them in a vector
          * @param txt expression to divide
          */
-        void divided_into_atoms (expr txt);
+        void divided_into_atoms ();
 
         /**
-         * @brief checks if the token is cell or not
-         * @param str an token of the expression
-         * @return true ,if the token is cell, otherwise
-         *         false
+         * @brief add a prefix for nodes
+         * @param atom node for eval
          */
-        bool is_cell(expr str);
+        void add_prefix(expr &atom);
 
         /**
-         * @brief checks if the token is constant or not
-         * @param str an token of the expression
-         * @return true ,if the token is const, otherwise
-         *         false
+         * @brief convert the atom list to postfix
          */
-        bool is_const(expr str);
+        void convert_to_postfix();
 
         /**
-         * @brief checks if the tokens is correct
-         * @return true if the tokens is correct, otherwise
-         *         false
-         * @sa is_cell() and is_const()
-         */
-        bool expr_is_correct();
-
-        /**
-         * @brief checks if the expression is correct
+         * @brief create different nodes type
+         * @param token part of list for eval
          * @return node pointer
-         * @sa clear_spaces(), clean_all(), expr_is_correct() and divided_into_atoms()
+         */
+        Node* new_node(expr token);
+
+        /**
+         * @brief inserts a node into tree
+         * @param token node to insert
+         */
+        void insert_node(Node* token);
+
+        /**
+         * @brief calls the functions for create tree
+         * @return node pointer
+         * @sa clear_spaces(), clean_all(),divided_into_atoms(),convert_to_postfix() and insert_node();
          */
         Node* parse();
-
-        /**
-         * @brief returns the list m_dependencies
-         * @return m_dependencies
-         */
-        list_depend get_dependencies(){return m_dependencies;}
 
         /**
          * @brief returns m_expression
@@ -97,11 +99,12 @@ class SyntaxAnalizer
          */
         expr get_expression(){return m_expression;}
 
-
     private:
-        expr m_expression; /**< expression */
+        LexicalAnalizer m_check;
         list_for_eval m_atoms;/**< tokens vector of the expression */
-        list_depend m_dependencies; /**< cell dependencies */
+        list_for_eval m_postfix;/**< tokens vector of the expression in post-order*/
+        expr m_expression; /**< expression */
+        Node* m_root;/**< tree poiter */
 };
 
 #endif // SYNTAXANALIZER_H

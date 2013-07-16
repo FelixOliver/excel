@@ -10,7 +10,7 @@ class NodeConst:public Node
          * @brief NodeConst constructor
          * @param constant constant number
          */
-        NodeConst(value constant):m_constant(constant){}
+        NodeConst(expr expression):Node(expression){}
 
         /**
          * @brief ~NodeConst destructor
@@ -21,9 +21,9 @@ class NodeConst:public Node
          * @brief returns the final value of the node
          * @return m_constant
          */
-        virtual value get_value(){return m_constant;}
-    private:
-        value m_constant;/**< number const */
+        virtual value get_value(){return atof(m_expression.c_str());}
+    //private:
+      //  value m_constant;/**< number const */
 };
 
 #endif // NODECONST_H

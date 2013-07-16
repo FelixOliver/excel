@@ -8,22 +8,15 @@ class NodeOperator:public Node
     public:
         /**
          * @brief NodeOperator constructor
-         * @param left_ptr pointer to left child
          * @param function_ptr function pointer (operations)
-         * @param right_ptr pointer to right child
          */
-        NodeOperator(Node* left_ptr,
-                     function function_ptr,
-                     Node* right_ptr=0):
-                     m_left_node(left_ptr),
-                     m_function_ptr(function_ptr),
-                     m_right_node(right_ptr)
-                     {};
+        NodeOperator(expr symbol):Node(symbol){}
 
         /**
          * @brief ~NodeOperator destructor
          */
         virtual ~NodeOperator(){}
+
 
         /**
          * @brief returns the final value of the node
@@ -35,12 +28,11 @@ class NodeOperator:public Node
             value r=0;
             if(m_right_node)
                 r=m_right_node->get_value();
-            return (*m_function_ptr)(l,r);
+            return get_function(m_expression)(l,r);
         }
-    private:
-        Node* m_left_node;/**< pointer to left child */
-        function m_function_ptr;/**< operation pointer */
-        Node* m_right_node;/**< pointer to right child */
+
+    //private:
+      //  function m_function_ptr;/**< operation pointer */
 };
 
 #endif // NODEOPERATOR_H

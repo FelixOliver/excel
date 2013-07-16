@@ -1,62 +1,20 @@
 #include "SyntaxAnalizer.h"
-#include "Operations.h"
-#include <sstream>
-
-
-bool SyntaxAnalizer::is_const(expr str)
-{
-    int dot_counter = 0;
-    for (register unsigned i=0;i<str.length();i++)
-    {
-        if (str[i]=='.')
-        {
-            ++dot_counter;
-            if(dot_counter>=2)
-                return false;
-        }
-        else if(isdigit(str[i])==false)
-            return false;
-    }
-    return true;
-}
-
-
-bool SyntaxAnalizer::is_cell(expr str)
-{
-    if(isalpha(str[0])==false)
-        return false;
-
-    int num=0;
-
-    for (register unsigned i=1;i<str.length();i++)
-    {
-        if(isdigit(str[i]))
-            ++num;
-        else if ((isalpha(str[i]))&&(num!=0))
-            return false;
-        else if (isalpha(str[i])==false)
-            return false;
-    }
-    if (num>0)
-        return true;
-    else return false;
-}
 
 
 bool SyntaxAnalizer::expr_is_correct()
 {
-    bool is_correct=true;
-    for(register unsigned i=0;i<m_atoms.size();i++ )
+    m_check.set_expression(m_expression);
+    if(m_check.get_result())
     {
-        if (m_atoms[i][0]=='.')
-            is_correct=is_correct and is_const(m_atoms[i]);
-        else if (isdigit(m_atoms[i][0]))
-            is_correct=is_correct and is_const(m_atoms[i]);
-
-        else if (isalpha(m_atoms[i][0]))
-            is_correct=is_correct and is_cell(m_atoms[i]);
+        m_expression=m_check.get_expression();
+        cout<<m_expression<<endl; /**< Solo para ver como quedo */
+        return true;
     }
-    return is_correct;
+    else
+    {
+        cout<<m_check.get_wrong_expression()<<endl; /**< Solo para ver como quedo */
+        return false;
+    }
 }
 
 void SyntaxAnalizer::clear_spaces()
@@ -69,59 +27,132 @@ void SyntaxAnalizer::clear_spaces()
         }
 }
 
-void SyntaxAnalizer::divided_into_atoms (expr txt)
+void SyntaxAnalizer::add_prefix(expr &atom)
 {
-    //int count_parenthesis=0;
-    expr atom="";
-    for (register unsigned i=1;i<txt.length();i++)
-    {
-        function funct_ptr;
-        stringstream ss;
-        string s;
-        string actual;
-        ss << txt[i];
-        ss>>actual;
+    if(isdigit(atom[0]))
+        atom="#"+atom;
+    else if(isupper(atom[0]))
+        atom="$"+atom;
+}
 
-        if ((find_symbol(actual,funct_ptr)==false))
+void SyntaxAnalizer::divided_into_atoms ()
+{
+    expr atom="";
+    for (register auto &iter:m_expression)
+    {
+        if(!is_operator(iter))
+            atom.push_back(iter);
+        else
         {
-            if(i==txt.length()-1)
-            {
-                atom=atom+actual;
-                m_atoms.push_back(atom);
-            }
-            else if((actual=="(") || (actual==")"))
-                if (atom=="")
-                    m_atoms.push_back(actual);
-                else
-                {
-                    m_atoms.push_back(atom);
-                    m_atoms.push_back(actual);
-                    atom="";
-                }
+            if(atom=="")
+                m_atoms.push_back(expr(1,iter));
             else
-            atom=atom+actual;
+            {
+                add_prefix(atom);
+                m_atoms.push_back(atom);
+                m_atoms.push_back(expr(1,iter));
+                atom="";
+            }
+        }
+    }
+    if(atom!="")
+    {
+        add_prefix(atom);
+        m_atoms.push_back(atom);
+    }
+}
+
+void SyntaxAnalizer::convert_to_postfix()
+{
+    stack_for_eval pila_temp;
+    expr temp;
+    for(register auto &iter:m_atoms)
+    {
+        if ((iter[0]=='#')||(iter[0]=='$'))
+            m_postfix.push_back(iter);
+        else if(iter=="(")
+            pila_temp.push(iter);
+        else if(iter==")")
+        {
+            temp=pila_temp.top();
+            while(pila_temp.size()>0 && (temp!="("))
+            {
+                m_postfix.push_back(temp);
+                pila_temp.pop();
+                temp=pila_temp.top();
+            }
+            if(temp=="(")
+                pila_temp.pop();
         }
         else
         {
-            if (atom!="")
-                m_atoms.push_back(atom);
-            m_atoms.push_back(actual);
-            atom="";
+            while(pila_temp.size()>0 && priority(pila_temp.top())<=priority(iter))
+            {
+                temp=pila_temp.top();
+                m_postfix.push_back(temp);
+                pila_temp.pop();
+            }
+            pila_temp.push(iter);
         }
     }
+    while(pila_temp.size())
+    {
+        m_postfix.push_back(pila_temp.top());
+        pila_temp.pop();
+    }
+}
+
+Node* SyntaxAnalizer::new_node(expr token)
+{
+    if(token[0]=='#')
+        return new NodeConst (token.erase(0,1));
+    if(token[0]=='$')
+        return new NodeCell (token.erase(0,1));
+    else
+        return new NodeOperator (token);
+}
+
+
+void SyntaxAnalizer::insert_node(Node* root)
+{
+    if(m_postfix.empty())
+        return;
+
+    if(isdigit(root->m_expression[0])||isupper(root->m_expression[0]))
+            return;
+
+    /*thread thread1([&root,this]{*/root->m_right_node=new_node(m_postfix.back());
+                                m_postfix.pop_back();
+                                insert_node(root->m_right_node);//});
+
+    /*thread thread2([&root,this]{*/root->m_left_node=new_node(m_postfix.back());
+                                m_postfix.pop_back();
+                                insert_node(root->m_left_node);//});
+
+    //thread1.join();
+    //thread2.join();
 }
 
 Node* SyntaxAnalizer::parse()
 {
+    if(expr_is_correct())
+    {
+        thread thread1([this]{clear_spaces();
+                           clean_all();});
+        thread thread2([this]{divided_into_atoms();
+                             for(auto&i:m_atoms)
+                                cout<<i<<",";
+                             cout<<endl;
+                             convert_to_postfix();
+                             for(auto&i:m_postfix)
+                                cout<<i<<",";});
+        thread1.join();
+        thread2.join();
 
-    clear_spaces();
-    clean_depend();
-    divided_into_atoms(m_expression);
+        m_root=new_node(m_postfix.back());
+        m_postfix.pop_back();
+        insert_node(m_root);
 
-    //etapa4: arbolito
-
-    //for()
-
-
-     return new NodeOperator(new NodeConst(9),&addition,new NodeConst(3));
+        return m_root;
+    }
 }

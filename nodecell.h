@@ -11,7 +11,7 @@ class NodeCell:public Node
          * @brief NodeCell constructor
          * @param cell_ptr cell pointer
          */
-        NodeCell(Cell<int>* cell_ptr):m_cell(cell_ptr){}
+        NodeCell(expr name):Node(name){}
 
         /**
          * @brief ~NodeCell destructor
@@ -22,10 +22,11 @@ class NodeCell:public Node
          * @brief returns the final value of the node
          * @return cell content
          */
-        inline virtual value get_value(){return (m_cell->get_content());}
+        inline virtual value get_value(){return //m_cell->get_content()
+                                                    2;}/**< valor fantsma por resolver */
 
-    private:
-        Cell<int>* m_cell;/**< cell pointer */
+    //private:
+        //expr m_name_cell;/**< cell pointer */
 
 };
 
