@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>guardar.png</file>
+        <file>icono 1.png</file>
+        <file>icono 2.png</file>
+        <file>imprimir.png</file>
+        <file>nuevo.png</file>
+        <file>Abrir.png</file>
+        <file>salir.png</file>
+        <file>icono 3.png</file>
+    </qresource>
+</RCC>

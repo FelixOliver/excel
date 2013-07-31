@@ -1,0 +1,13 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\syntaxanalizer.o
+./release\operations.o
+./release\preview_print.o
+./release\lexicalanalizer.o
+./release\savedocument.o
+./release\Cell.o
+./release\qrc_Resources.o
+./release\moc_mainwindow.o
+./release\moc_preview_print.o
+);

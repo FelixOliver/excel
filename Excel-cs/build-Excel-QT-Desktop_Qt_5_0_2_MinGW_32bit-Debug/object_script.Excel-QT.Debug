@@ -1,0 +1,13 @@
+INPUT(
+./debug\main.o
+./debug\mainwindow.o
+./debug\syntaxanalizer.o
+./debug\operations.o
+./debug\preview_print.o
+./debug\lexicalanalizer.o
+./debug\savedocument.o
+./debug\Cell.o
+./debug\qrc_Resources.o
+./debug\moc_mainwindow.o
+./debug\moc_preview_print.o
+);
